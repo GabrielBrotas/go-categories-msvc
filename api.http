@@ -1,0 +1,12 @@
+GET http://localhost:8080/healthy
+
+###
+GET http://localhost:8080/categories
+
+###
+POST http://localhost:8080/categories
+Content-Type: application/json
+
+{
+    "Name": "Docker"
+}
