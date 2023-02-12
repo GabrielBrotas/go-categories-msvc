@@ -19,6 +19,7 @@ func (u *createCategoryUseCase) Execute(name string) error {
 	if err != nil {
 		return err
 	}
+
 	// TODO: verify if category name already exists
 	err = u.repository.Save(category)
 
