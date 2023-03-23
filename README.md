@@ -1,5 +1,3 @@
-commit
-
 ## Requirements
 - [X] create an http server
 - [X] the api should be able to create a new category
