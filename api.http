@@ -1,3 +1,4 @@
+###
 GET http://localhost:8080/healthy
 
 ###
@@ -8,5 +9,20 @@ POST http://localhost:8080/categories
 Content-Type: application/json
 
 {
-    "Name": "Docker"
+    "name": "Technology"
 }
+
+
+###
+GET http://localhost:8080/categories/2
+
+###
+PATCH http://localhost:8080/categories/2
+Content-Type: application/json
+
+{
+    "name": "Docker"
+}
+
+###
+DELETE http://localhost:8080/categories/2

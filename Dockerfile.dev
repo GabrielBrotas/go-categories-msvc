@@ -1,0 +1,25 @@
+FROM golang:1.18.10
+
+RUN apt-get update && apt-get install -y zsh \
+    curl \
+    git
+
+WORKDIR /app
+
+RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- \
+    -t https://github.com/denysdovhan/spaceship-prompt \
+    -a 'SPACESHIP_USER_SHOW=always' \
+    -a 'SPACESHIP_PROMPT_ADD_NEWLINE=false' \
+    -a 'SPACESHIP_CHAR_SUFFIX=" "' \
+    -a 'SPACESHIP_PROMPT_SEPARATE_LINE="false"' \
+    -p git-flow \
+    -p https://github.com/zdharma-continuum/fast-syntax-highlighting \
+    -p git \
+    -p ssh-agent \
+    -p https://github.com/zsh-users/zsh-autosuggestions
+
+EXPOSE 8080
+
+ENV ENVIRONMENT=local
+
+CMD ["tail", "-f", "/dev/null"]

@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: categories-api
+    volumes:
+      - ./:/app
+    ports:
+      - 8080:8080
+
+  categories-db:
+    image: postgres:13.1-alpine
+    container_name: categories-db
+    restart: always
+    tty: true
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password123
+      - POSTGRES_DB=meetup
+    volumes:
+      - .docker/db:/var/lib/postgresql/data
+      
